@@ -1,0 +1,21 @@
+<template>
+    <lightning-card >
+        <div class="slds-box">
+        <lightning-card title="Self Feedback" icon-name="standard:opportunity">
+            <lightning-accordion >
+                <template for:each= {feedbackIds} for:item="year">
+                <lightning-accordion-section key= {year.key} name= {year.key} label= {year.key}>
+                <template for:each= {year.value} for:item="conId">
+                <lightning-card key= {conId.Id} variant="Narrow" >
+                    <div class="slds-box" >
+                        <c-base-component objectname ={objectApiName} recordid={conId.Id} columndata={column} column='2'></c-base-component>
+                    </div>
+                </lightning-card>
+            </template>
+            </lightning-accordion-section>
+        </template>
+            </lightning-accordion>
+        </lightning-card>
+        </div>
+    </lightning-card>
+</template>

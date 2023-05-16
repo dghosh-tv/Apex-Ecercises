@@ -1,0 +1,27 @@
+<template>
+    <lightning-card >
+        <div class="slds-box">
+        <lightning-card title="Contribution" icon-name="standard:opportunity"></lightning-card>
+        <template lwc:if={isContributionAvailable}>
+        <lightning-accordion >
+            <template for:each= {contributionIds} for:item="year">
+            <lightning-accordion-section key= {year.key} name= {year.key} label= {year.key}>
+            <template for:each= {year.value} for:item="conId">
+            <lightning-card key= {conId.Id} variant="Narrow" >
+                <template lwc:if={coulmn}>
+                <div class="slds-box" >
+                    <c-base-component objectname ={objectApiName} recordid={conId.Id} columndata={horizontalFieldSet} column="3"></c-base-component>
+                    <c-base-component objectname ={objectApiName} recordid={conId.Id} columndata={verticalFieldSet} column="2"></c-base-component>
+                    <c-base-component objectname ={objectApiName} recordid={conId.Id} columndata={detailFieldSet} column="1"></c-base-component>
+                </div>
+            </template>
+            </lightning-card>
+        </template>
+        </lightning-accordion-section>
+    </template>
+        </lightning-accordion>
+    </template>
+    </div>
+    </lightning-card>
+    
+</template>

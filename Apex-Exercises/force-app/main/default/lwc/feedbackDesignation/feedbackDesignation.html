@@ -1,0 +1,38 @@
+<template>
+    <lightning-card>
+        <div class="slds-box">
+            <div style="display:flex; justify-content:space-between">
+                <lightning-card title="Feedback" icon-name="standard:opportunity"></lightning-card>
+                <lightning-button-icon icon-name="utility:refresh" onclick= {refresh}></lightning-button-icon>
+            </div>
+            <template lwc:if={isFeedbackAvailable}>
+                <lightning-accordion>
+                    <template for:each={feedbackIds} for:item="year">
+                        <div key={year.key}>
+                            <lightning-accordion-section name={year.key} label={year.key}>
+                                <lightning-badge label={year.value.length}></lightning-badge>
+                                <lightning-button-icon variant="brand" icon-name="utility:add" size="x-small" class="slds-m-left_xx-small" onclick= {addContribution}></lightning-button-icon>
+                                <template for:each={year.value} for:item="conId">
+                                    <div key={conId.Id}>
+                                          <lightning-card variant="Narrow">
+                                            <template lwc:if={column}>
+                                                <div class="slds-box">
+                                                    <c-base-component objectname={objectApiName} recordid={conId.Id}
+                                                        columndata={verticalFieldSet} column="2"></c-base-component>
+                                                    <c-base-component objectname={objectApiName} recordid={conId.Id}
+                                                        columndata={horizontalFieldSet} column="4"></c-base-component>
+                                                    <c-base-component objectname={objectApiName} recordid={conId.Id}
+                                                        columndata={detailFieldSet} column="1"></c-base-component>
+                                                </div>
+                                            </template>
+                                        </lightning-card>
+                                    </div>
+                                </template>
+                            </lightning-accordion-section>
+                        </div>
+                    </template>
+                </lightning-accordion>
+            </template>
+        </div>
+    </lightning-card>
+</template>

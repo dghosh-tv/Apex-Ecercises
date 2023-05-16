@@ -1,0 +1,17 @@
+<template>
+    <lightning-card>
+        <div class="slds-box">
+    <lightning-card if:true= {showHeader} title= {title} icon-name="standard:contact"></lightning-card>
+    <lightning-card>
+                <lightning-record-form
+                object-api-name= {objectApiName}
+                record-id= {contactId}
+                fields= {column}
+                mode="readonly"
+                columns= {columnView}
+            >
+            </lightning-record-form>
+        </lightning-card>
+    </div>
+</lightning-card>
+</template>
